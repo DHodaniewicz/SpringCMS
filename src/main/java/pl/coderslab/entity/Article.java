@@ -15,7 +15,17 @@ public class Article {
     private String content;
     private LocalDateTime crated;
     private LocalDateTime updated;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     @PrePersist
     public void prePersist() {
