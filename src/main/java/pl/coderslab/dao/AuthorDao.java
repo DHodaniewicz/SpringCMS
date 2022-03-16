@@ -37,4 +37,8 @@ public class AuthorDao {
         return query.getResultList();
     }
 
+    public Author find(Long id) {
+        return entityManager.find(Author.class, id);
+    }
+
 }

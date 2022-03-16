@@ -14,9 +14,25 @@
   </head>
   <body>
   <%--@elvariable id="article" type="pl.coderslab.entity.Article"--%>
-  <form method="post" modelAttribute="article">
-        <form:label path="title">Podaj tytul artykułu:</form:label>
-        <form:input path="title" />
-  </form>
+  <form:form method="post" modelAttribute="article">
+    <p>
+    <form:label path="title">Podaj tytuł artykulu:</form:label>
+    <form:input path="title" />
+    </p>
+    <p>
+    <form:label path="content">Podaj zawartosc artykulu:</form:label>
+    <form:input path="content" />
+    </p>
+    <p>
+    <form:select itemValue="id" itemLabel="firstName"
+                 path="author.id" items="${availableAuthors}"/>
+    </p>
+    <p>
+      <form:select path="categories" itemLabel="name"
+                   itemValue="id" items="${availableCategories}" multiple="true" />
+    </p>
+    <p><input type="submit" value="Save"></p>
+  </form:form>
+
   </body>
 </html>
