@@ -1,6 +1,7 @@
 package pl.coderslab.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -11,12 +12,21 @@ public class Category {
     @Column(nullable = false)
     private String name;
     private String description;
+    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
+    private Set<Article> articles;
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Id
+    public Set<Article> getArticles() {
+        return articles;
+    }
+
+    public void setArticles(Set<Article> articles) {
+        this.articles = articles;
+    }
+
     public Long getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package pl.coderslab.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Entity
@@ -16,8 +17,17 @@ public class Article {
     private LocalDateTime crated;
     private LocalDateTime updated;
     @ManyToOne
-    @JoinColumn(name = "author_id")
     private Author author;
+    @ManyToMany
+    private List<Category> categories;
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
 
     public Author getAuthor() {
         return author;
@@ -42,7 +52,7 @@ public class Article {
         this.id = id;
     }
 
-    @Id
+
     public Long getId() {
         return id;
     }
@@ -79,4 +89,15 @@ public class Article {
     public void setUpdated(LocalDateTime updated) {
         this.updated = updated;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", crated=" + crated +
+                '}';
+    }
 }
+
+

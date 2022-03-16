@@ -5,7 +5,9 @@ import pl.coderslab.entity.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Repository
@@ -29,4 +31,14 @@ public class CategoryDao {
         }
         entityManager.remove(category);
     }
+
+    public List<Category> getAllCategories() {
+        Query query = entityManager.createQuery("SELECT c FROM Category c");
+        return query.getResultList();
+    }
+
+    public Category find(Long id) {
+        return entityManager.find(Category.class, id);
+    }
+
 }

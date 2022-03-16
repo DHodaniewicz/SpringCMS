@@ -16,7 +16,6 @@ public class Author {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
