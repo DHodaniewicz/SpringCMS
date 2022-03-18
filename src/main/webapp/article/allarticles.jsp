@@ -13,8 +13,9 @@
     <title>Title</title>
   </head>
   <body>
+  <%--@elvariable id="article" type="pl.coderslab.entity.Article"--%>
   <c:forEach items="${articles}" var="article">
-    <li>${article.title} ${article.content} ${article.author.lastName} </li>
+    <li>${article.title} ${article.content} ${article.author.firstName} ${article.author.lastName} </li>
   </c:forEach>
   
   </body>

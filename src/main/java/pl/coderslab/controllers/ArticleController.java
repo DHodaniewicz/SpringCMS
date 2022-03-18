@@ -14,20 +14,23 @@ import pl.coderslab.entity.Article;
 import pl.coderslab.entity.Author;
 import pl.coderslab.entity.Category;
 
+import javax.validation.Validator;
 import java.util.List;
 
 @Controller
 @RequestMapping("/article")
 public class ArticleController {
-    ArticleDoa articleDoa;
-    AuthorDao authorDao;
-    CategoryDao categoryDao;
+    private final ArticleDoa articleDoa;
+    private final AuthorDao authorDao;
+    private final CategoryDao categoryDao;
+    private final Validator validator;
 
     @Autowired
-    public ArticleController(ArticleDoa articleDoa, AuthorDao authorDao, CategoryDao categoryDao) {
+    public ArticleController(ArticleDoa articleDoa, AuthorDao authorDao, CategoryDao categoryDao, Validator validator) {
         this.articleDoa = articleDoa;
         this.authorDao = authorDao;
         this.categoryDao = categoryDao;
+        this.validator = validator;
     }
 
     @GetMapping("/all")
@@ -43,9 +46,9 @@ public class ArticleController {
     }
 
     @PostMapping("/add")
-    public String AddArticle(Model model, Article article) {
+    public String addArticle(Model model, Article article) {
         articleDoa.saveArticle(article);
-        return "/article/all";
+        return "redirect:/article/all";
     }
 
 

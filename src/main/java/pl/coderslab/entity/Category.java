@@ -1,6 +1,9 @@
 package pl.coderslab.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 @Entity
@@ -10,6 +13,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @Size(min = 5)
     private String name;
     private String description;
     @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)

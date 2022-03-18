@@ -14,7 +14,7 @@
   </head>
   <body>
   <%--@elvariable id="article" type="pl.coderslab.entity.Article"--%>
-  <form:form method="post" modelAttribute="article">
+  <form:form method="post" modelAttribute="article" action="/article/add">
     <p>
     <form:label path="title">Podaj tytuł artykulu:</form:label>
     <form:input path="title" />

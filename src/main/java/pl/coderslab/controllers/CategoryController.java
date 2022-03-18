@@ -7,14 +7,19 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.dao.CategoryDao;
 import pl.coderslab.entity.Category;
 
+import javax.validation.Validator;
+
+
 @Controller
 @RequestMapping("/category")
 public class CategoryController {
     CategoryDao categoryDao;
+    Validator validator;
 
     @Autowired
-    public CategoryController(CategoryDao categoryDao) {
+    public CategoryController(CategoryDao categoryDao, Validator validator) {
         this.categoryDao = categoryDao;
+        this.validator = validator;
     }
 
     @GetMapping("/all")
@@ -53,6 +58,7 @@ public class CategoryController {
         categoryDao.mergeCategory(category);
         return "redirect:/category/all";
     }
+
 
 
 }
