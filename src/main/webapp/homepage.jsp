@@ -13,11 +13,11 @@
   </head>
   <body>
   <table>
-  <c:forEach items="${articleList}" var="article">
+    <%--@elvariable id="category" type="pl.coderslab.entity.Category"--%>
+  <c:forEach items="${categoryList}" var="category">
     <tr>
-      <td>${article.title}</td>
-      <td>${article.crated}</td>
-      <td>${article.content}</td>
+      <td><a href="/all-articles/${category.id}"/> ${category.name}</td>
+      <td>${category.description}</td>
     </tr>
   </c:forEach>
   </table>
